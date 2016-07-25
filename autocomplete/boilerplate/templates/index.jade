@@ -1,0 +1,29 @@
+//-
+    Created by ewino on 25/7/2016.
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title Autocomplete Test</title>
+        link(rel="stylesheet", type="text/css", href="/static/external/roboto/roboto.css")
+        link(rel="stylesheet", type="text/css", href="/static/css/style.css")
+    body(ng-app="example.autocomplete")
+        div.container(id="app" ng-controller="AutoCompleteCtrl as ctrl")
+            h1
+                | 50 Shades of&nbsp;
+                span(ng-style="{color: (ctrl.color | lowercase)}", ng-bind="ctrl.color")
+            .input-wrapper
+                input(type="search")
+            ol.dropdown
+                li.selected
+                    .sample(style="background-color: red")
+                    span Red
+                li
+                    .sample(style="background-color: blue")
+                    span Blue
+
+        script(src="/static/external/jquery-2.2.3/jquery.min.js")
+        script(src="/static/external/lodash-4.3.1/lodash.min.js")
+        script(src="/static/external/angular-1.5.5/angular.min.js")
+        script(src="/static/js/app.js")
