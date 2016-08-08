@@ -5,7 +5,6 @@
         .module('app')
         .run(appRun);
 
-    /* @ngInject */
     function appRun(routerHelper) {
         routerHelper.configureStates(getStates(), '/');
     }
@@ -23,15 +22,15 @@
             {
                 state: 'main.department',
                 config: {
-                    url: '/departments/{departmentId:\\d+}',
+                    url: 'departments/{departmentId:\\d+}',
                     templateUrl: '/static/build/layout/department.html',
                     controller: 'DepartmentController as deptVm'
                 }
             },
             {
-                state: 'main.department.product',
+                state: 'main.product',
                 config: {
-                    url: '/products/{productId:\\d+}',
+                    url: 'products/{productId:\\d+}',
                     templateUrl: '/static/build/product/product.html',
                     controller: 'ProductController as prodVm'
                 }
