@@ -11,7 +11,7 @@
                 deptId: '=',
                 name: '='
             },
-            templateUrl: '/static/build/layout/deptBtn.html'
+            templateUrl: '/static/build/layout/deptSidebarBtn.html'
         };
     }
 

@@ -1,5 +1,5 @@
 md-toolbar
-    h2.md-toolbar-tools: span Uniform Store
+    h2.md-toolbar-tools: span Uniform Store / {{ deptVm.deptName }}
 
 div(flex, layout="row")
     md-sidenav.md-sidenav-left(md-component-id='left', md-is-locked-open="$mdMedia('gt-md')", md-disable-backdrop='', md-whiteframe='4')
@@ -7,7 +7,7 @@ div(flex, layout="row")
             md-subheader.md-primary Departments
             md-list(layout-padding)
                 md-list-item(ng-repeat="dept in deptVm.departments")
-                    department-button(dept-id="dept.id", name="dept.name")
+                    department-button(flex, dept-id="dept.id", name="dept.name", layout="row")
 
     md-content(flex, layout-padding)
         div(layout='column', layout-fill='', layout-align='top center')
