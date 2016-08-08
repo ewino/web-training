@@ -8,8 +8,7 @@
     function departmentButton() {
         return {
             scope: {
-                deptId: '=',
-                name: '='
+                dept: '='
             },
             templateUrl: '/static/build/layout/deptSidebarBtn.html'
         };

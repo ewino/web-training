@@ -5,18 +5,11 @@
         .module('app.department', [])
         .controller('DepartmentController', DepartmentController);
 
-    function DepartmentController($scope) {
+    function DepartmentController($scope, $stateParams, DepartmentService) {
         var deptVm = this;
 
         // variables.
-        // TODO: remove this
-        deptVm.departments = [
-            {id: 1, name: 'Shirts'},
-            {id: 2, name: 'Pants'},
-            {id: 3, name: 'Hats'},
-            {id: 4, name: 'Belts'}
-        ];
-
+        deptVm.departments = [];
         deptVm.currentDept = null;
         deptVm.deptName = null;
 
@@ -34,5 +27,13 @@
                 }
             });
         };
+
+        DepartmentService.getDepartments()
+            .then(function(resp) {
+                deptVm.departments = resp.data;
+            })
+            .catch(function() {
+                console.error('Couldn\'t load departments');
+            })
     }
 })();

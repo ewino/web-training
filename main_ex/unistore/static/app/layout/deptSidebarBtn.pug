@@ -1,2 +1,3 @@
 menu-link(flex, layout="row")
-    a.md-button.md-ink-ripple.md-primary(href="/departments/{{:: deptId }}", flex, ng-bind=":: name")
+    a.md-button.md-ink-ripple.md-primary(href="/departments/{{:: dept.id }}", flex, ng-bind=":: dept.name",
+        ng-attr-title="{{ :: dept.description }}")
