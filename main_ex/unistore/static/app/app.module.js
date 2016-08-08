@@ -12,7 +12,7 @@
             // Services & Components.
             // 'app.services', 'app.components'
             // Feature modules.
-            'app.product'//, 'app.department'
+            'app.department', 'app.product'
         ])
         .run();
 

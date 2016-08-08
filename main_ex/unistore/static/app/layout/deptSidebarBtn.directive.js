@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.main')
+        .module('app.department')
         .directive('departmentButton', departmentButton);
 
     function departmentButton() {
@@ -11,10 +11,7 @@
                 deptId: '=',
                 name: '='
             },
-            templateUrl: '/static/build/layout/deptBtn.html',
-            link: function(scope, el) {
-
-            }
+            templateUrl: '/static/build/layout/deptSidebarBtn.html'
         };
     }
 
