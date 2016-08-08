@@ -1,10 +1,38 @@
-//-
-    Created by ewino on 5/5/2016.
+include mixins.pug
+
 doctype html
-html
+
+html(ng-app="app")
     head
         meta(charset='UTF-8')
         title Army Store
-        link(rel='shortcut icon', type='image/png', href=url_for("static", filename = "img/favicon.png", _external = true))
-        link(rel='stylesheet', href=url_for("static", filename="css/base.css"))
-    body
+        link(rel="shortcut icon", href="/static/images/favicon.png")
+
+        base(href="/")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="description", content="Buy uniforms!")
+        meta(name="author", content="Ehud&Ofir")
+
+        | {% if config.DEBUG %}
+        // Including livereload in production cause a performance hit for users,
+            so flask will not emit the following line if the settings are not set to debug.
+        // buildCfg is provided by gulp and is the same as build.config.js.
+        +script("http://localhost:" + buildCfg.livereloadPort + "/livereload.js?snipver=1")
+        | {% endif %}
+
+        +script("/static/bower_components/angular/angular.js")
+        +script("/static/bower_components/angular-animate/angular-animate.min.js")
+        +script("/static/bower_components/angular-sanitize/angular-sanitize.min.js")
+        +script("/media/bower_components/angular-messages/angular-messages.min.js")
+        +script("/media/bower_components/angular-aria/angular-aria.min.js")
+
+        +script("/static/bower_components/angular-ui-router/release/angular-ui-router.min.js")
+
+        +style("/static/bower_components/angular-material/angular-material.css")
+        +script("/static/bower_components/angular-material/angular-material.js")
+
+        +style("/static/build/app.css")
+        +script("/static/build/app.js")
+
+    body(ng-cloak)
+        div#wrapper(ui-view)
