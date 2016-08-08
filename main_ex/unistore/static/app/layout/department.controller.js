@@ -21,7 +21,7 @@
         deptVm.loadState = function() {
             var params = $state.params;
             if (params['departmentId'] !== undefined) {
-               deptVm.currentDept = params['departmentId'];
+                deptVm.currentDept = params['departmentId'];
             }
             refreshDepartment();
         };

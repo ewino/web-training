@@ -1,7 +1,4 @@
-md-toolbar(layout="row")
-    .md-toolbar-tools
-        md-icon(md-svg-icon="/static/images/tshirt-crew.svg")
-        h2(flex=true, layout-padding=true) Uniform Store / {{ deptVm.deptName }}
+main-header(show-icon=true, text="'Uniform Store' + (deptVm.deptName ? ' / ' + deptVm.deptName : '')")
 
 div(flex, layout="row")
     md-sidenav.md-sidenav-left(md-component-id='left', md-is-locked-open="$mdMedia('gt-md')", md-disable-backdrop='', md-whiteframe='4')
