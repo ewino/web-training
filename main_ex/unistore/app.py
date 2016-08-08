@@ -1,12 +1,10 @@
 from flask import Flask
-from flask import render_template
 
 from .. import config
+from .views import app_views
 
-app = Flask(__name__, template_folder='static/build')
+app = Flask(__name__.split('.')[0])
+app.debug = config.DEBUG
+app.template_folder = config.TEMPLATE_FOLDER
 
-
-@app.route('/<path:path>')
-@app.route('/')
-def home(path=None):
-    return render_template('index.html', config=config)
+app.register_blueprint(app_views)
