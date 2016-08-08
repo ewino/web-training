@@ -10,7 +10,7 @@
             // Basic app blocks.
             'blocks.router',
             // Services & Components.
-            // 'app.services', 'app.components'
+            'app.components',
             // Feature modules.
             'app.department', 'app.product'
         ]);

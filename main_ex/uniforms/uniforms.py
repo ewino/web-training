@@ -39,7 +39,7 @@ _PRODUCTS_DATA = [
         'department_id': 1,
         'name': 'B Uniform Trousers',
         'price': 60,
-        'amount': 8,
+        'amount': 0,
         'description': 'An over-worn piece of clothing'
     },
     {
@@ -67,7 +67,7 @@ def _validate_positive_integer(value, max_limit, include_zero=False):
         if not value.isdecimal():
             return False
         value = int(value)
-    return isinstance(value, int) and 0 < value <= max_limit and (include_zero or value != 0)
+    return isinstance(value, int) and (0 < value <= max_limit or (include_zero and value == 0))
 
 
 def get_departments():
@@ -89,7 +89,7 @@ def get_products(department_id):
     """
     max_department_id = len(_DEPARTMENTS_DATA) - 1
     # Validate department ID.
-    if not _validate_positive_integer(department_id, max_department_id, include_zero=False):
+    if not _validate_positive_integer(department_id, max_department_id, include_zero=True):
         raise ValueError('Please give a proper department ID! (0-{})'.format(max_department_id))
     return deepcopy([product for product in _PRODUCTS_DATA if product['department_id'] == department_id])
 
@@ -104,7 +104,7 @@ def get_product(product_id):
     """
     max_product_id = len(_PRODUCTS_DATA) - 1
     # Validate product ID.
-    if not _validate_positive_integer(product_id, max_product_id, include_zero=False):
+    if not _validate_positive_integer(product_id, max_product_id, include_zero=True):
         raise ValueError('Please give a proper product ID! (0-{})'.format(max_product_id))
     return deepcopy(_PRODUCTS_DATA[int(product_id)])
 
@@ -120,12 +120,12 @@ def buy_product(product_id, amount=1):
     """
     max_product_id = len(_PRODUCTS_DATA) - 1
     # Validate product ID.
-    if not _validate_positive_integer(product_id, max_product_id, include_zero=False):
+    if not _validate_positive_integer(product_id, max_product_id, include_zero=True):
         raise ValueError('Please give a proper product ID! (0-{})'.format(max_product_id))
     product = _PRODUCTS_DATA[int(product_id)]
     max_product_amount = product['amount']
     # Validate amount.
-    if not _validate_positive_integer(amount, max_product_amount, include_zero=True):
+    if not _validate_positive_integer(amount, max_product_amount, include_zero=False):
         raise ValueError('Please give a proper amount to buy! (1-{})'.format(max_product_amount))
     product['amount'] -= int(amount)
     return deepcopy(product)

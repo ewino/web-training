@@ -1,16 +1,12 @@
-md-toolbar
-    h2.md-toolbar-tools: span Uniform Store / {{ deptVm.deptName }}
+main-header(show-icon=true, text="'Uniform Store' + (deptVm.deptName ? ' / ' + deptVm.deptName : '')")
 
 div(flex, layout="row")
     md-sidenav.md-sidenav-left(md-component-id='left', md-is-locked-open="$mdMedia('gt-md')", md-disable-backdrop='', md-whiteframe='4')
         md-content
             md-subheader Departments
-            department-button(flex, ng-repeat="dept in deptVm.departments", dept="dept", layout="row")
+            department-button(flex, ng-repeat="dept in deptVm.departments", dept="dept", layout="row", is-active="dept.id == deptVm.currentDept")
 
     md-content(flex, layout-padding)
-        div(layout='column', layout-fill='', layout-align='top center')
-            p The left sidenav will 'lock open' on a medium (>=960px wide) device.
-            p The right sidenav will focus on a specific child element.
-            div: md-button.md-primary(ng-click='toggleLeft()', hide-gt-md='') Toggle left
-            div: md-button.md-primary(ng-click='toggleRight()', ng-hide='isOpenRight()') Toggle right
-        div(flex)
+        md-grid-list(md-cols="6", md-row-height="1:1", md-gutter-gt-sm="4px")
+            md-grid-tile(ng-repeat="product in deptVm.products track by product.id")
+                mini-product(product="product")
