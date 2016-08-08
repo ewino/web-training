@@ -28,11 +28,25 @@
 
         function refreshDepartment() {
             deptVm.deptName = '';
+            var found = false;
             angular.forEach(deptVm.departments, function(dept) {
                 if (dept.id === deptVm.currentDept) {
                     deptVm.deptName = dept.name;
+                    found = true;
+                    return false;
                 }
             });
+
+            if (found) {
+                var departmentId = deptVm.currentDept;
+                DepartmentService.getProducts(departmentId)
+                    .then(function(resp) {
+                        deptVm.products = resp.data;
+                    })
+                    .catch(function() {
+                        console.error('Couldn\'t load products for department ' + departmentId);
+                    });
+            }
         }
 
         DepartmentService.getDepartments()
