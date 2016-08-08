@@ -39,7 +39,7 @@ _PRODUCTS_DATA = [
         'department_id': 1,
         'name': 'B Uniform Trousers',
         'price': 60,
-        'amount': 8,
+        'amount': 0,
         'description': 'An over-worn piece of clothing'
     },
     {
@@ -67,7 +67,7 @@ def _validate_positive_integer(value, max_limit, include_zero=False):
         if not value.isdecimal():
             return False
         value = int(value)
-    return isinstance(value, int) and 0 < value <= max_limit and (include_zero or value != 0)
+    return isinstance(value, int) and (0 < value <= max_limit or (include_zero and value == 0))
 
 
 def get_departments():
