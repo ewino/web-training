@@ -4,7 +4,7 @@ md-toolbar
 div(flex, layout="row")
     md-sidenav.md-sidenav-left(md-component-id='left', md-is-locked-open="$mdMedia('gt-md')", md-disable-backdrop='', md-whiteframe='4')
         md-content
-            md-subheader.md-primary Departments
+            md-subheader Departments
             department-button(flex, ng-repeat="dept in deptVm.departments", dept-id="dept.id", name="dept.name", layout="row")
 
     md-content(flex, layout-padding)
