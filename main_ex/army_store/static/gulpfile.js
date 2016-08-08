@@ -7,11 +7,11 @@ var livereload = require('gulp-livereload');
 var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
 var ngAnnotate = require('gulp-ng-annotate');
-var bower = require('gulp-bower');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var del = require('del');
 var lazypipe = require('lazypipe');
+var nib = require('nib');
 
 // Load user config and package data
 var cfg = require('./build.config.js');
@@ -28,12 +28,6 @@ gulp.task('default', ['build']);
 gulp.task('clean', function () {
     return del(['build/**', 'compile/**']);
 });
-/**
- * A simple command which updates bower dependencies.
- */
-gulp.task('bower', function () {
-    return bower();
-});
 // Build tasks.
 gulp.task('build-scripts', ['clean'], function () {
     return gulp.src(cfg.appFiles.js).pipe(buildJs());
@@ -49,9 +43,9 @@ gulp.task('build-templates', ['clean'], function () {
 });
 
 /**
- * Actual build task. Note that we hint gulp to first run bower and clean.
+ * Actual build task. Note that we hint gulp to first run clean.
  */
-gulp.task('build', ['bower', 'clean', 'build-scripts', 'build-styles', 'build-templates']);
+gulp.task('build', ['clean', 'build-scripts', 'build-styles', 'build-templates']);
 
 /**
  * Watch all files and re-compile on change.
@@ -110,7 +104,7 @@ function buildJs() {
 function buildStylus() {
     var stylusPipe = lazypipe()
         .pipe(plumber, {errorHandler: util.log})
-        .pipe(stylus)
+        .pipe(stylus, {use: nib(), compress: true})
         .pipe(gulp.dest, 'compile/css/stylus');
 
     return stylusPipe();
