@@ -1,5 +1,7 @@
-md-toolbar
-    h2.md-toolbar-tools: span Uniform Store / {{ deptVm.deptName }}
+md-toolbar(layout="row")
+    .md-toolbar-tools
+        md-icon(md-svg-icon="/static/images/tshirt-crew.svg")
+        h2(flex=true, layout-padding=true) Uniform Store / {{ deptVm.deptName }}
 
 div(flex, layout="row")
     md-sidenav.md-sidenav-left(md-component-id='left', md-is-locked-open="$mdMedia('gt-md')", md-disable-backdrop='', md-whiteframe='4')
