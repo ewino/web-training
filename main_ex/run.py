@@ -3,11 +3,11 @@ import sys
 import logbook
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
-from tornado.wsgi import WSGIContainer
 from tornado.web import Application, FallbackHandler
+from tornado.wsgi import WSGIContainer
 
-from .config import PORT, IP
 from unistore.app import app
+from unistore.config import PORT, IP
 
 
 def run_server():

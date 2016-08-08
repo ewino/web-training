@@ -1,6 +1,6 @@
 from flask import Flask
 
-from .. import config
+from . import config
 from .views import app_views
 
 app = Flask(__name__.split('.')[0])
