@@ -8,7 +8,7 @@ module.exports = {
 	 * These file paths are used in the configuration of the build tasks.
 	 */
 	appFiles: {
-		js: ['app/**/*.module.js', 'app/**/*.js'],
+		js: ['app/**/*.module.js', 'app/**/*.controller.js', 'app/**/*.js'],
 		pug: 'app/**/*.pug',
 		stylus: 'app/**/*.styl',
 		compiledCss: 'compile/css/**/*.css'
