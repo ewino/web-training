@@ -28,9 +28,9 @@
                 }
             },
             {
-                state: 'main.product',
+                state: 'product',
                 config: {
-                    url: 'products/{productId:\\d+}',
+                    url: '/products/{productId:\\d+}',
                     templateUrl: '/static/build/product/product.html',
                     controller: 'ProductController as prodVm'
                 }

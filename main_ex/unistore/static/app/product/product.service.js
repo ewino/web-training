@@ -12,8 +12,8 @@
             buyProduct: buyProduct
         };
 
-        function getProduct(departmentId, productId) {
-            return $http.get('/api/departments/' + departmentId + '/products/' + productId)
+        function getProduct(productId) {
+            return $http.get('/api/products/' + productId)
                 .then(function (response) {
                     return response.data;
                 })
@@ -22,12 +22,12 @@
                 });
         }
 
-        function buyProduct(departmentId, productId, amount) {
-            return $http.post('/api/departments/' + departmentId + '/products/' + productId + 'buy', {
+        function buyProduct(productId, amount) {
+            return $http.post('/api/products/' + productId + '/buy', {
                 amount: amount
             })
             .catch(function (error) {
-                $log.error('XHR failed for updateIOC. ' + error.data);
+                $log.error('XHR failed for buyProduct. ' + error.data);
             });
         }
     }

@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, json, jsonify, render_template, request
 import logbook
-import ujson
 
 from uniforms import uniforms
 from unistore import config
@@ -19,16 +18,16 @@ def _handle_uniforms_function(func, *args):
     :return: The function's return value as JSON, or an error JSON ({'Error': error_message}).
     """
     try:
-        return ujson.dumps(func(args))
+        return jsonify(func(*args))
     except ValueError as ex:
         error_string = str(ex)
         logger.error(error_string)
-        return ujson.dumps({'Error:': str(error_string)})
+        return jsonify({'Error:': str(error_string)})
 
 
 @app_views.route('/api/departments', methods=['GET'])
 def get_departments():
-    return ujson.dumps(uniforms.get_departments())
+    return jsonify(uniforms.get_departments())
 
 
 @app_views.route('/api/departments/<int:department_id>/products', methods=['GET'])
@@ -36,13 +35,18 @@ def get_products(department_id):
     return _handle_uniforms_function(uniforms.get_products, department_id)
 
 
+@app_views.route('/api/products/<int:product_id>', methods=['GET'])
+def get_product(product_id):
+    return _handle_uniforms_function(uniforms.get_product, product_id)
+
+
 @app_views.route('/api/products/<int:product_id>/buy', methods=['POST'])
 def buy_product(product_id):
     # Get the buying amount from the request data.
-    data = ujson.loads(request.data)
+    data = json.loads(request.data)
     amount = data.get('amount')
     if amount is None:
-        return ujson.dumps({'Error:': 'No buying amount was given!'})
+        return jsonify({'Error:': 'No buying amount was given!'})
     return _handle_uniforms_function(uniforms.buy_product, product_id, amount)
 
 

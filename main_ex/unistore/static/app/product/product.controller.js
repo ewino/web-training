@@ -5,10 +5,9 @@
         .module('app.product', [])
         .controller('ProductController', ProductController);
 
-    function ProductController($scope, productService) {
+    function ProductController($scope, $stateParams, productService) {
         var prodVm = this;
 
-        prodVm.departmentId = null;
         prodVm.productId = null;
         prodVm.product = null;
 
@@ -22,15 +21,19 @@
 
         // Load local variables from the state (the URL of the page).
         function loadFromState() {
-            prodVm.departmentId = $scope.$stateParams.departmentId;
-            prodVm.productId = $scope.$stateParams.productId;
-            prodVm.product = productService.getProduct(prodVm.departmentId, prodVm.productId);
+            prodVm.productId = $stateParams.productId;
+            productService.getProduct(prodVm.productId)
+                .then(function(response) {
+                    prodVm.product = response;
+                })
         }
 
         function buyProduct(amount) {
             if (amount > 0 && amount <= prodVm.product.amount) {
-                productService.buyProduct(prodVm.departmentId, prodVm.productId, amount);
-                prodVm.product.amount -= amount;
+                productService.buyProduct(prodVm.productId, amount)
+                    .then(function() {
+                        prodVm.product.amount -= amount;
+                    });
             }
         }
   }

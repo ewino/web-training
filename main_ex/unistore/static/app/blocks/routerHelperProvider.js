@@ -5,7 +5,6 @@
         .module('blocks.router', [])
         .provider('routerHelper', routerHelperProvider);
 
-    /* @ngInject */
     function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
         /* jshint validthis:true */
         this.$get = RouterHelper;

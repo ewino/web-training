@@ -13,7 +13,6 @@
             // 'app.services', 'app.components'
             // Feature modules.
             'app.department', 'app.product'
-        ])
-        .run();
+        ]);
 
 })();

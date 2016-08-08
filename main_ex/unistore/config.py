@@ -1,7 +1,7 @@
 import os
 
 # Debug settings.
-DEBUG = False
+DEBUG = True
 # Important folders.
 PROJECT_FOLDER = os.path.dirname(__file__)
 STATIC_FOLDER = os.path.join(PROJECT_FOLDER, 'static')
