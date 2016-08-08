@@ -1,5 +1,6 @@
 from copy import deepcopy
 
+# The entire uniforms DB.
 _DATA = [
     {
         'id': 0,
@@ -60,7 +61,8 @@ def get_products(department_id):
     Get a list of all available products in the given department.
 
     :param department_id: The department ID.
-    :return: The department's products list, or None if an error occurred.
+    :return: The department's products list.
+    :raise ValueError: If the department ID is not valid.
     """
     max_department_id = len(_DATA) - 1
     # Validate department ID.
@@ -77,6 +79,7 @@ def buy_product(department_id, product_id, amount=1):
     :param product_id: The product ID.
     :param amount: The amount of products to buy.
     :return: The new product JSON, or None if an error occurred.
+    :raise ValueError: If the department ID or the product ID are not valid.
     """
     max_department_id = len(_DATA) - 1
     # Validate department ID.

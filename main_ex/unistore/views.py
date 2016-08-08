@@ -11,6 +11,22 @@ logger = logbook.Logger('Unistore')
 app_views = Blueprint('app_views', __name__, template_folder=config.TEMPLATE_FOLDER)
 
 
+def _handle_uniforms_function(func, *args):
+    """
+    Wrap uniforms functions with JSON and errors handling code.
+
+    :param func: The uniforms function to run.
+    :param args: The original function arguments.
+    :return: The function's return value as JSON, or an error JSON ({'Error': error_message}).
+    """
+    try:
+        return ujson.dumps(func(args))
+    except ValueError as ex:
+        error_string = str(ex)
+        logger.error(error_string)
+        return ujson.dumps({'Error:': str(error_string)})
+
+
 @app_views.route('/api/departments', methods=['GET'])
 def get_departments():
     return ujson.dumps(get_departments())
@@ -18,12 +34,12 @@ def get_departments():
 
 @app_views.route('/api/departments/<int:department_id>/products', methods=['GET'])
 def get_products(department_id):
-    return ujson.dumps(get_products(department_id))
+    return _handle_uniforms_function(get_products, department_id)
 
 
 @app_views.route('/api/departments/<int:department_id>/products/<int:product_id>/buy', methods=['POST'])
 def buy_product(department_id, product_id):
-    return ujson.dumps(buy_product(department_id, product_id))
+    return _handle_uniforms_function(buy_product, department_id, product_id)
 
 
 @app_views.route('/<path:path>')
