@@ -11,10 +11,7 @@
                 deptId: '=',
                 name: '='
             },
-            templateUrl: '/static/build/layout/deptBtn.html',
-            link: function(scope, el) {
-
-            }
+            templateUrl: '/static/build/layout/deptBtn.html'
         };
     }
 
