@@ -16,8 +16,8 @@
                 state: 'main',
                 config: {
                     url: '/',
-                    templateUrl: '/static/build/layout/main.html',
-                    controller: 'MainController as mainVm'
+                    templateUrl: '/static/build/layout/department.html',
+                    controller: 'DepartmentController as deptVm'
                 }
             }
         ];

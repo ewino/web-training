@@ -2,14 +2,14 @@
     'use strict';
 
     angular
-        .module('app.main', [])
-        .controller('MainController', MainController);
+        .module('app.department', [])
+        .controller('DepartmentController', DepartmentController);
 
-    function MainController() {
-        var mainVm = this;
+    function DepartmentController() {
+        var deptVm = this;
 
         // variables.
-        mainVm.departments = [
+        deptVm.departments = [
             {id: 1, name: 'Shirts'},
             {id: 2, name: 'Pants'},
             {id: 3, name: 'Hats'},

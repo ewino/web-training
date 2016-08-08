@@ -6,7 +6,7 @@ div(flex, layout="row")
         md-content(layout-padding)
             md-subheader.md-primary Departments
             md-list(layout-padding)
-                md-list-item(ng-repeat="dept in mainVm.departments")
+                md-list-item(ng-repeat="dept in deptVm.departments")
                     department-button(dept-id="dept.id", name="dept.name")
 
     md-content(flex, layout-padding)
