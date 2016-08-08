@@ -23,17 +23,25 @@
             if (params['departmentId'] !== undefined) {
                deptVm.currentDept = params['departmentId'];
             }
+            refreshDepartment();
+        };
+
+        function refreshDepartment() {
             deptVm.deptName = '';
             angular.forEach(deptVm.departments, function(dept) {
                 if (dept.id == deptVm.currentDept) {
                     deptVm.deptName = dept.name;
                 }
             });
-        };
+        }
 
         DepartmentService.getDepartments()
             .then(function(resp) {
                 deptVm.departments = resp.data;
+                if (deptVm.currentDept === null) {
+                    deptVm.currentDept = deptVm.departments[0].id;
+                }
+                refreshDepartment();
             })
             .catch(function() {
                 console.error('Couldn\'t load departments');
