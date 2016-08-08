@@ -22,7 +22,10 @@ def _handle_uniforms_function(func, *args):
     except ValueError as ex:
         error_string = str(ex)
         logger.error(error_string)
-        return jsonify({'Error:': str(error_string)})
+        response = jsonify({'Error:': str(error_string)})
+        """ :type: werkzeug.wrappers.BaseResponse """
+        response.status_code = 400
+        return response
 
 
 @app_views.route('/api/departments', methods=['GET'])
