@@ -10,9 +10,9 @@
             // Basic app blocks.
             'blocks.router',
             // Services & Components.
-            'app.services', 'app.components'
+            // 'app.services', 'app.components'
             // Feature modules.
-            //'app.chat', 'app.search'
+            'app.main'
         ])
         .run();
 

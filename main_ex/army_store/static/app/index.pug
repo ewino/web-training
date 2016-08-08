@@ -14,22 +14,22 @@ html(ng-app="app")
         meta(name="author", content="Ehud&Ofir")
 
         | {% if config.DEBUG %}
-        // Including livereload in production cause a performance hit for users,
-            so flask will not emit the following line if the settings are not set to debug.
-        // buildCfg is provided by gulp and is the same as build.config.js.
+        //- Including livereload in production cause a performance hit for users,
+             so flask will not emit the following line if the settings are not set to debug.
+        //- buildCfg is provided by gulp and is the same as build.config.js.
         +script("http://localhost:" + buildCfg.livereloadPort + "/livereload.js?snipver=1")
         | {% endif %}
 
-        +script("/static/bower_components/angular/angular.js")
-        +script("/static/bower_components/angular-animate/angular-animate.min.js")
-        +script("/static/bower_components/angular-sanitize/angular-sanitize.min.js")
-        +script("/media/bower_components/angular-messages/angular-messages.min.js")
-        +script("/media/bower_components/angular-aria/angular-aria.min.js")
+        +script("/static/node_modules/angular/angular.js")
+        +script("/static/node_modules/angular-animate/angular-animate.min.js")
+        +script("/static/node_modules/angular-sanitize/angular-sanitize.min.js")
+        +script("/static/node_modules/angular-messages/angular-messages.min.js")
+        +script("/static/node_modules/angular-aria/angular-aria.min.js")
 
-        +script("/static/bower_components/angular-ui-router/release/angular-ui-router.min.js")
+        +script("/static/node_modules/angular-ui-router/release/angular-ui-router.min.js")
 
-        +style("/static/bower_components/angular-material/angular-material.css")
-        +script("/static/bower_components/angular-material/angular-material.js")
+        +style("/static/node_modules/angular-material/angular-material.css")
+        +script("/static/node_modules/angular-material/angular-material.js")
 
         +style("/static/build/app.css")
         +script("/static/build/app.js")
