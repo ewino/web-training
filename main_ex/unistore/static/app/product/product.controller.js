@@ -25,7 +25,7 @@
             productService.getProduct(prodVm.productId)
                 .then(function(response) {
                     prodVm.product = response;
-                })
+                });
         }
 
         function buyProduct(amount) {

@@ -21,7 +21,7 @@
         deptVm.loadState = function() {
             var params = $state.params;
             if (params['departmentId'] !== undefined) {
-                deptVm.currentDept = params['departmentId'];
+                deptVm.currentDept = +params['departmentId'];
             }
             refreshDepartment();
         };
@@ -29,7 +29,7 @@
         function refreshDepartment() {
             deptVm.deptName = '';
             angular.forEach(deptVm.departments, function(dept) {
-                if (dept.id == deptVm.currentDept) {
+                if (dept.id === deptVm.currentDept) {
                     deptVm.deptName = dept.name;
                 }
             });
