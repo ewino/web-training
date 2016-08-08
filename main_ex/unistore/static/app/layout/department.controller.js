@@ -5,7 +5,7 @@
         .module('app.department', [])
         .controller('DepartmentController', DepartmentController);
 
-    function DepartmentController($scope, $stateParams, DepartmentService) {
+    function DepartmentController($scope, $state, DepartmentService) {
         var deptVm = this;
 
         // variables.
@@ -19,10 +19,13 @@
         });
 
         deptVm.loadState = function() {
-            deptVm.currentDept = 1;
+            var params = $state.params;
+            if (params['departmentId'] !== undefined) {
+               deptVm.currentDept = params['departmentId'];
+            }
             deptVm.deptName = '';
             angular.forEach(deptVm.departments, function(dept) {
-                if (dept.id === deptVm.currentDept) {
+                if (dept.id == deptVm.currentDept) {
                     deptVm.deptName = dept.name;
                 }
             });
@@ -34,6 +37,6 @@
             })
             .catch(function() {
                 console.error('Couldn\'t load departments');
-            })
+            });
     }
 })();
