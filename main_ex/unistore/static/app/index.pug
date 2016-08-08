@@ -34,5 +34,5 @@ html(ng-app="app")
         +style("/static/build/app.css")
         +script("/static/build/app.js")
 
-    body(ng-cloak)
-        div#wrapper(ui-view)
+    body(ng-cloak, layout="column")
+        div#wrapper(ui-view, flex, layout="column")

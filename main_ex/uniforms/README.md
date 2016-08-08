@@ -1,5 +1,5 @@
 # Uniforms
-###The official uniform store DB package
+### The official uniform store DB package
 
 Holds a list of departments, and a list of product JSONs for each department.  
 Each department and product has a unique ID.  
@@ -16,6 +16,7 @@ Every product JSON holds the following details:
 * Price
 * Current amount
 * Description
+* Similar products list (tuples of department and product IDs)
 
 The product image can be found in the images directory, in the file with the matching ID name.  
 For example, for the product with ID 30, the image file name will be 30.png.

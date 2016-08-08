@@ -1,7 +1,6 @@
-import ujson
-
+from flask import Blueprint, render_template, request
 import logbook
-from flask import render_template, Blueprint
+import ujson
 
 from uniforms.uniforms import get_departments, get_products, buy_product
 from unistore import config
@@ -39,7 +38,12 @@ def get_products(department_id):
 
 @app_views.route('/api/departments/<int:department_id>/products/<int:product_id>/buy', methods=['POST'])
 def buy_product(department_id, product_id):
-    return _handle_uniforms_function(buy_product, department_id, product_id)
+    # Get the buying amount from the request data.
+    data = ujson.loads(request.data)
+    amount = data.get('amount')
+    if amount is None:
+        return ujson.dumps({'Error:': 'No buying amount was given!'})
+    return _handle_uniforms_function(buy_product, department_id, product_id, amount)
 
 
 @app_views.route('/<path:path>')

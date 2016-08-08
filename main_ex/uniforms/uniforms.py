@@ -12,8 +12,7 @@ _DATA = [
                 'name': 'Undershirt',
                 'price': 50,
                 'amount': 10,
-                'description': 'The teasingly thin cotton shirt usually seen worn by usually hot-the-ones-you-fancy '
-                               'footballers underneath their jerseys'
+                'description': 'A teasingly thin cotton shirt'
             },
             {
                 'id': 1,
@@ -21,7 +20,10 @@ _DATA = [
                 'price': 120,
                 'amount': 20,
                 'description': 'Clothing that makes you free of judgements based on clothing by being constricting, '
-                               'uncomfortable and generally ugly'
+                               'uncomfortable and generally ugly',
+                'similar_products': [
+                    (1, 1)
+                ]
             }
         ]
     },
@@ -35,7 +37,17 @@ _DATA = [
                 'name': 'B Uniform Trousers',
                 'price': 60,
                 'amount': 8,
-                'description': 'An over-worn piece of clothing that has taken over the army'
+                'description': 'An over-worn piece of clothing'
+            },
+            {
+                'id': 1,
+                'name': 'A Uniform Trousers',
+                'price': 100,
+                'amount': 18,
+                'description': 'A nicer version of the over-worn B trousers',
+                'similar_products': [
+                    (0, 1)
+                ]
             }
         ]
     }
