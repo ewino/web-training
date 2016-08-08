@@ -1,0 +1,28 @@
+md-dialog(flex="60", ng-cloak, aria-label="Buy")
+    md-toolbar
+        .md-toolbar-tools
+            h2 Buy Products
+    md-dialog-content(layout="column", layout-align="center center")
+        .md-dialog-content(layout="row", layout-fill)
+            span(flex="10")
+            form(flex="80", name="productBuyDialogVm.buyForm", ng-submit="productBuyDialogVm.buyForm.$valid && productBuyDialogVm.ok()")
+                div(flex, layout="column", layout-margin)
+                    md-input-container.md-block
+                        label Amount
+                        input(type="number", name="amount", ng-model="productBuyDialogVm.amount", min="1", max="{{ productBuyDialogVm.product.amount }}", required)
+                        div(ng-messages="productBuyDialogVm.buyForm.amount.$error")
+                            div(ng-message="required") Please enter an amount!
+                            div(ng-message="number") You didn't enter a valid number!
+                            div(ng-message="min") Please enter a number larger than 0!
+                            div(ng-message="max") Please enter a number smaller than {{ productBuyDialogVm.product.amount + 1 }}!
+                    md-input-container.md-block
+                        label Color
+                        md-select(ng-model="productBuyDialogVm.color", name="color", required)
+                            md-option(ng-repeat="color in productBuyDialogVm.colors") {{ color.name }}
+                        div(ng-messages="productBuyDialogVm.buyForm.color.$error")
+                            div(ng-message="required") Please pick a color!
+                    div(layout="row")
+                        md-button.md-raised.md-warn(ng-click="productBuyDialogVm.cancel()") Cancel
+                        span(flex)
+                        md-button.md-raised.md-primary(type="submit", ng-disabled="productBuyDialogVm.buyForm.$pristine") OK
+            spen(flex="10")

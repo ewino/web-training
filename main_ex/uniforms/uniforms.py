@@ -102,7 +102,7 @@ def get_product(product_id):
     :return: The product details JSON.
     :raise ValueError: If the product ID is not valid.
     """
-    max_product_id = len(_DEPARTMENTS_DATA) - 1
+    max_product_id = len(_PRODUCTS_DATA) - 1
     # Validate product ID.
     if not _validate_positive_integer(product_id, max_product_id, include_zero=False):
         raise ValueError('Please give a proper product ID! (0-{})'.format(max_product_id))

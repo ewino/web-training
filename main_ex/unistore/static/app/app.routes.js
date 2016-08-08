@@ -32,7 +32,7 @@
                 config: {
                     url: '/products/{productId:\\d+}',
                     templateUrl: '/static/build/product/product.html',
-                    controller: 'ProductController as prodVm'
+                    controller: 'productController as prodVm'
                 }
             }
         ];

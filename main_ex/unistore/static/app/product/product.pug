@@ -1,1 +1,9 @@
-h1 Hello!
+md-content(flex, layout="column", layout-align="center center")
+    h1.product-header {{ prodVm.product.name }}
+    div(layout="row", layout-align="center start")
+        div(flex="20", layout="column", layout-align="center start")
+            h3.product-description {{ prodVm.product.description }}
+            h3.product-price Price: {{ prodVm.product.price }}
+            h3.product-amount Amount: {{ prodVm.product.amount }}
+            md-button.md-raised.md-primary(ng-click="prodVm.buyProduct()") Buy
+        img.product-image(src="/static/images/{{ prodVm.productId }}.png")

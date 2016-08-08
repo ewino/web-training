@@ -3,9 +3,9 @@
 
     angular
         .module('app.product', [])
-        .controller('ProductController', ProductController);
+        .controller('productController', ProductController);
 
-    function ProductController($scope, $stateParams, productService) {
+    function ProductController($scope, $stateParams, $mdDialog, productService) {
         var prodVm = this;
 
         prodVm.productId = null;
@@ -28,13 +28,20 @@
                 })
         }
 
-        function buyProduct(amount) {
-            if (amount > 0 && amount <= prodVm.product.amount) {
-                productService.buyProduct(prodVm.productId, amount)
-                    .then(function() {
-                        prodVm.product.amount -= amount;
-                    });
-            }
+        function buyProduct() {
+            $mdDialog.show({
+                templateUrl: '/static/build/product/productBuyDialog.html',
+                controller: 'productBuyDialogController as productBuyDialogVm',
+                clickOutsideToClose: true,
+                locals: {
+                    product: prodVm.product
+                }
+            }).then(function(amount) {
+                if (amount) {
+                    prodVm.product.amount -= amount;
+                }
+            });
         }
+
   }
 })();
