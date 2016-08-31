@@ -6,10 +6,10 @@ div(flex, layout="row")
         div.product-details(layout="row", layout-align="center start")
             div(flex="25", layout="column", layout-align="center center")
                 h3.product-description {{ prodVm.product.description }}
-                h3.product-price Price: {{ prodVm.product.price }}
-                h3.product-amount Amount: {{ prodVm.product.amount }}
+                h3.product-price Price: {{ prodVm.product.price | number | currency:'₪' }}
+                h3.product-amount Amount: {{ prodVm.product.amount | productAmount }}
                 md-button.md-raised.md-primary(ng-click="prodVm.buyProduct()", ng-disabled="prodVm.product.amount <= 0") Buy
-            img.product-image(src="/static/images/{{ prodVm.productId }}.png")
+            img.product-image(ng-src="{{ prodVm.product | productImage }}" alt="Product Logo")
         div(ng-if="prodVm.similarProducts.length > 0")
             md-divider
             h2.product-header Similar Products

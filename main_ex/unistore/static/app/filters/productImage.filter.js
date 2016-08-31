@@ -3,11 +3,11 @@
 
     angular
         .module('app.filters')
-        .filter('productImage', ProductImageFilter);
+        .filter('productImage', productImageFilter);
 
-    function ProductImageFilter() {
+    function productImageFilter() {
         return function filter (product) {
-            return '/static/images/' + product.id + '.png';
+            return product ? '/static/images/' + product.id + '.png' : null;
         };
     }
 })();
