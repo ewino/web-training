@@ -1,4 +1,4 @@
 menu-link(flex, layout="row")
     a.md-button.md-ink-ripple.md-primary(href="/departments/{{:: dept.id }}", flex, ng-bind=":: dept.name",
         ng-class="{active: isActive}")
-        md-tooltip {{ :: dept.description }}
+        md-tooltip(md-direction="bottom") {{ :: dept.description }}
