@@ -5,7 +5,7 @@
         .module('app.product')
         .controller('ProductBuyDialogController', ProductBuyDialogController);
 
-    function ProductBuyDialogController($mdDialog, product, productService) {
+    function ProductBuyDialogController($mdDialog, $mdToast, product, productService) {
         var productBuyDialogVm = this;
 
         productBuyDialogVm.product = product;
@@ -30,6 +30,8 @@
         function ok() {
             productService.buyProduct(productBuyDialogVm.product.id, productBuyDialogVm.amount)
                 .then(function(response) {
+                    $mdToast.showSimple('Bought ' + productBuyDialogVm.product.name + ' (' +
+                        productBuyDialogVm.amount + ')');
                     $mdDialog.hide(response.data.amount);
                 });
         }
