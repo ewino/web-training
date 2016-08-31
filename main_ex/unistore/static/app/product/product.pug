@@ -1,11 +1,19 @@
 main-header(show-icon=true, text="'Uniform Store' + (prodVm.department.name ? ' / ' + prodVm.department.name : '')")
 div(flex, layout="row")
-    md-content(flex, layout="column", layout-align="center center")
-        h1.product-header {{ prodVm.product.name }}
-        div.product-details(layout="row", layout-align="center start")
-            div(flex="30", layout="column", layout-align="center center")
-                h3.product-description {{ prodVm.product.description }}
-                h3.product-price Price: {{ prodVm.product.price }}
-                h3.product-amount Amount: {{ prodVm.product.amount }}
-                md-button.md-raised.md-primary(ng-click="prodVm.buyProduct()", ng-disabled="prodVm.product.amount <= 0") Buy
-            img.product-image(src="/static/images/{{ prodVm.productId }}.png")
+    div(flex, layout="column")
+        div(layout="column", layout-align="start center")
+            h1.product-header {{ prodVm.product.name }}
+            div.product-details(layout="row", layout-align="center start")
+                div(flex="30", layout="column", layout-align="center center")
+                    h3.product-description {{ prodVm.product.description }}
+                    h3.product-price Price: {{ prodVm.product.price }}
+                    h3.product-amount Amount: {{ prodVm.product.amount }}
+                    md-button.md-raised.md-primary(ng-click="prodVm.buyProduct()", ng-disabled="prodVm.product.amount <= 0") Buy
+                img.product-image(src="/static/images/{{ prodVm.productId }}.png")
+        div(flex, layout="column", ng-if="prodVm.similarProducts.length > 0")
+            md-divider
+            h2.similar-products-header Similar Products
+            div(flex, layout-padding)
+                md-grid-list(md-cols="6", md-row-height="1:1")
+                    md-grid-tile(ng-repeat="similarProduct in prodVm.similarProducts track by similarProduct.id")
+                        mini-product(product="similarProduct")

@@ -10,6 +10,7 @@
 
         prodVm.productId = null;
         prodVm.product = null;
+        prodVm.similarProducts = [];
         prodVm.department = null;
 
         prodVm.loadFromState = loadFromState;
@@ -23,21 +24,21 @@
         // Load local variables from the state (the URL of the page).
         function loadFromState() {
             prodVm.productId = $stateParams.productId;
-            productService.getProduct(prodVm.productId)
-                .then(function(response) {
-                    prodVm.product = response;
-                    // Load department details as well.
-                    departmentService.getDepartment(prodVm.product.department_id)
-                        .then(function(response) {
-                            prodVm.department = response;
-                        })
-                        .catch(function() {
-                            console.error('Couldn\'t load details for department ' + prodVm.product.department_id);
+            productService.getProduct(prodVm.productId).then(function(response) {
+                prodVm.product = response;
+                if (prodVm.product.similar_products) {
+                    // Load similar products.
+                    angular.forEach(prodVm.product.similar_products, function (similarProductId) {
+                        productService.getProduct(similarProductId).then(function(response) {
+                            prodVm.similarProducts.push(response);
                         });
+                    });
+                }
+                // Load department details as well.
+                departmentService.getDepartment(prodVm.product.department_id).then(function(response) {
+                    prodVm.department = response;
                 })
-                .catch(function() {
-                    console.error('Couldn\'t load details for product ' + prodVm.productId);
-                });
+            });
         }
 
         function buyProduct() {
