@@ -1,9 +1,10 @@
-a(ng-attr-href="/products/{{ product.id }}")
-    md-card
+a(ng-attr-href="/products/{{ product.id }}", flex, layout="column")
+    md-card(flex, layout="column")
         .img-container
             img.md-card-image(ng-src="{{ product | productImage }}" alt="Product Logo")
-        md-card-title: md-card-title-text.md-headline(ng-bind=":: product.name")
-        md-card-content
-            p(ng-bind=":: product.description")
-            div(ng-bind=":: product.price | currency")
+        md-card-title: md-card-title-text
+            .md-headline(ng-bind=":: product.name")
+            .md-subheadline(ng-bind=":: product.description")
+        md-card-content(layout="row")
+            div(flex, ng-bind=":: product.price | currency")
             div(ng-if=":: !product.amount") Out of stock!
