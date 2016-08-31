@@ -3,7 +3,7 @@
 
   angular
     .module('app.product')
-    .controller('productBuyDialogController', ProductBuyDialogController);
+    .controller('ProductBuyDialogController', ProductBuyDialogController);
 
   function ProductBuyDialogController($mdDialog, product, productService) {
       var productBuyDialogVm = this;
@@ -28,7 +28,10 @@
       }
 
       function ok() {
-          return productService.buyProduct(productBuyDialogVm.product.id, productBuyDialogVm.amount);
+          productService.buyProduct(productBuyDialogVm.product.id, productBuyDialogVm.amount)
+              .then(function(response) {
+                  $mdDialog.hide(response.data.amount);
+              });
       }
 
   }

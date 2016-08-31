@@ -51,7 +51,7 @@
 
         DepartmentService.getDepartments()
             .then(function(resp) {
-                deptVm.departments = resp.data;
+                deptVm.departments = resp.data.departments;
                 if (deptVm.currentDept === null) {
                     deptVm.currentDept = deptVm.departments[0].id;
                 }

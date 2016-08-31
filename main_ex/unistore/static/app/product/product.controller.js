@@ -5,7 +5,7 @@
         .module('app.product', [])
         .controller('ProductController', ProductController);
 
-    function ProductController($scope, $stateParams, productService) {
+    function ProductController($scope, $stateParams, $mdDialog, productService) {
         var prodVm = this;
 
         prodVm.productId = null;
@@ -28,13 +28,20 @@
                 });
         }
 
-        function buyProduct(amount) {
-            if (amount > 0 && amount <= prodVm.product.amount) {
-                productService.buyProduct(prodVm.productId, amount)
-                    .then(function() {
-                        prodVm.product.amount -= amount;
-                    });
-            }
+        function buyProduct() {
+            $mdDialog.show({
+                templateUrl: '/static/build/product/productBuyDialog.html',
+                controller: 'ProductBuyDialogController as productBuyDialogVm',
+                clickOutsideToClose: true,
+                locals: {
+                    product: prodVm.product
+                }
+            }).then(function(amount) {
+                if (angular.isDefined(amount)) {
+                    prodVm.product.amount = amount;
+                }
+            });
         }
-    }
+
+  }
 })();
