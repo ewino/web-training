@@ -13,7 +13,6 @@ div(flex, layout="row")
         div(flex, layout="column", ng-if="prodVm.similarProducts.length > 0")
             md-divider
             h2.similar-products-header Similar Products
-            div(flex, layout-padding)
-                md-grid-list(md-cols="6", md-row-height="1:1")
-                    md-grid-tile(ng-repeat="similarProduct in prodVm.similarProducts track by similarProduct.id")
-                        mini-product(product="similarProduct")
+            div.products-gallery(flex, layout-padding)
+                .md-padding(layout="row", layout-wrap)
+                    mini-product(ng-repeat="similarProduct in prodVm.similarProducts track by similarProduct.id", product="similarProduct")
