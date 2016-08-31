@@ -1,7 +1,8 @@
-div(layout="column")
-    a(ng-attr-href="/products/{{ product.id }}")
-        img(ng-attr-src="{{ :: imageUrl }}")
-        h4(ng-bind=":: product.name")
-        p(ng-bind=":: product.description")
-        div(ng-bind=":: product.price | currency")
-        div(ng-if=":: !product.amount") Out of stock!
+a(ng-attr-href="/products/{{ product.id }}")
+    md-card
+        img.md-card-image(ng-src="{{ product | productImage }}" alt="Product Logo")
+        md-card-title: md-card-title-text(ng-bind=":: product.name")
+        md-card-content
+            p(ng-bind=":: product.description")
+            div(ng-bind=":: product.price | currency")
+            div(ng-if=":: !product.amount") Out of stock!
