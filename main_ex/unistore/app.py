@@ -8,3 +8,5 @@ app.debug = config.DEBUG
 app.template_folder = config.TEMPLATE_FOLDER
 
 app.register_blueprint(app_views)
+
+app.run(debug=config.DEBUG)

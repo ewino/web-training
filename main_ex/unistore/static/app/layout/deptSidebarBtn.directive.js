@@ -7,6 +7,7 @@
 
     function departmentButton() {
         return {
+            restrict: 'E',
             scope: {
                 dept: '='
             },

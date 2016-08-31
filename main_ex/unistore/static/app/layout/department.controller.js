@@ -40,7 +40,7 @@
             if (found) {
                 var departmentId = deptVm.currentDept;
                 departmentService.getProducts(departmentId).then(function(response) {
-                    deptVm.products = response;
+                    deptVm.products = response.products;
                 });
             }
         }

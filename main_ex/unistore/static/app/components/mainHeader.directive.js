@@ -7,6 +7,7 @@
 
     function mainHeader() {
         return {
+            restrict: 'E',
             scope: {
                 text: '=',
                 showIcon: '='
