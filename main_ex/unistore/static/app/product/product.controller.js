@@ -35,9 +35,10 @@
                     });
                 }
                 // Load department details as well.
-                departmentService.getDepartment(prodVm.product.department_id).then(function(response) {
-                    prodVm.department = response;
-                })
+                departmentService.getDepartment(prodVm.product.department_id)
+                    .then(function(response) {
+                        prodVm.department = response;
+                    });
             });
         }
 
@@ -55,6 +56,5 @@
                 }
             });
         }
-
-  }
+    }
 })();
