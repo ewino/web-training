@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.filters', [])
+        .module('app.filters')
         .filter('productImage', ProductImageFilter);
 
     function ProductImageFilter() {

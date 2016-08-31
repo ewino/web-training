@@ -1,4 +1,4 @@
-md-sidenav.md-sidenav-left(md-component-id='left', md-is-locked-open="$mdMedia('gt-md')", md-disable-backdrop='', md-whiteframe='4')
+md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="$mdMedia('gt-md')", md-disable-backdrop="true", md-whiteframe="4")
     md-content
         md-subheader Departments
         department-button(flex, ng-repeat="dept in deptVm.departments", dept="dept", layout="row", is-active="dept.id == deptVm.currentDept")
