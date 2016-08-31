@@ -6,6 +6,6 @@ div(flex, layout="row")
             md-subheader Departments
             department-button(flex, ng-repeat="dept in deptVm.departments", dept="dept", layout="row", is-active="dept.id == deptVm.currentDept")
 
-    md-content(flex, layout-padding)
+    md-content.products-gallery(flex, layout-padding)
         .md-padding(layout="row", layout-wrap)
             mini-product(ng-repeat="product in deptVm.products track by product.id", product="product")
