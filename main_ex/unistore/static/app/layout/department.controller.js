@@ -50,8 +50,8 @@
         }
 
         departmentService.getDepartments()
-            .then(function(response) {
-                deptVm.departments = response.departments;
+            .then(function(departments) {
+                deptVm.departments = departments;
                 if (deptVm.currentDept === null) {
                     deptVm.currentDept = deptVm.departments[0].id;
                 }

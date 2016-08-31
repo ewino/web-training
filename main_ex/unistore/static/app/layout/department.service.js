@@ -33,7 +33,6 @@
                 });
         }
 
-
         function getProducts(departmentId) {
             return $http.get('/api/departments/' + departmentId + '/products')
                 .then(function (response) {
