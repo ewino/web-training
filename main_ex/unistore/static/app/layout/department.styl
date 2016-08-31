@@ -1,4 +1,18 @@
 @import 'nib'
 
-.products-gallery md-card
-  width 250px
+.products-gallery
+    a
+        color inherit
+        text-decoration none
+
+    md-card
+        width 250px
+
+    .img-container
+        height 100px
+        overflow: hidden
+        position: relative
+
+        > img
+            absolute top 25%
+            transform translateY(-25%)

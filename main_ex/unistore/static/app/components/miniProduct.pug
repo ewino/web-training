@@ -1,7 +1,8 @@
 a(ng-attr-href="/products/{{ product.id }}")
     md-card
-        img.md-card-image(ng-src="{{ product | productImage }}" alt="Product Logo")
-        md-card-title: md-card-title-text(ng-bind=":: product.name")
+        .img-container
+            img.md-card-image(ng-src="{{ product | productImage }}" alt="Product Logo")
+        md-card-title: md-card-title-text.md-headline(ng-bind=":: product.name")
         md-card-content
             p(ng-bind=":: product.description")
             div(ng-bind=":: product.price | currency")
