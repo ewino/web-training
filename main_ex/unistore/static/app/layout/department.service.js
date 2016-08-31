@@ -3,19 +3,46 @@
 
     angular
         .module('app.department')
-        .factory('DepartmentService', DepartmentService);
+        .factory('departmentService', departmentService);
 
-    function DepartmentService($http) {
-        var service = {};
+    function departmentService($http, $log) {
 
-        service.getDepartments = function() {
-            return $http.get('/api/departments');
+        return {
+            getDepartments: getDepartments,
+            getDepartment: getDepartment,
+            getProducts: getProducts
         };
 
-        service.getProducts = function(departmentId) {
-            return $http.get('/api/departments/' + departmentId + '/products');
-        };
+        function getDepartments() {
+            return $http.get('/api/departments')
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(function (error) {
+                    $log.error('XHR failed for getDepartments. ' + error.data);
+                });
+        }
 
-        return service;
+        function getDepartment(departmentId) {
+            return $http.get('/api/departments/' + departmentId)
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(function (error) {
+                    $log.error('XHR failed for getDepartment. ' + error.data);
+                });
+        }
+
+
+        function getProducts(departmentId) {
+            return $http.get('/api/departments/' + departmentId + '/products')
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(function (error) {
+                    $log.error('XHR failed for getProducts. ' + error.data);
+                });
+        }
+
     }
 })();

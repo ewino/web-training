@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('app.product', [])
+        .module('app.product', ['app.department'])
         .controller('ProductController', ProductController);
 
-    function ProductController($scope, $stateParams, $mdDialog, productService) {
+    function ProductController($scope, $stateParams, $mdDialog, productService, departmentService) {
         var prodVm = this;
 
         prodVm.productId = null;
@@ -25,6 +25,14 @@
             productService.getProduct(prodVm.productId)
                 .then(function(response) {
                     prodVm.product = response;
+                    // Load department details as well.
+                    departmentService.getDepartment(prodVm.product.department_id)
+                        .then(function(response) {
+                            prodVm.department = response;
+                        })
+                        .catch(function() {
+                            console.error('Couldn\'t load details for department ' + prodVm.product.department_id);
+                        });
                 });
         }
 

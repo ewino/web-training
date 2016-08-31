@@ -1,9 +1,12 @@
-md-content(flex, layout="column", layout-align="center center")
-    h1.product-header {{ prodVm.product.name }}
-    div.product-details(layout="row", layout-align="center start")
-        div(flex="30", layout="column", layout-align="center center")
-            h3.product-description {{ prodVm.product.description }}
-            h3.product-price Price: {{ prodVm.product.price }}
-            h3.product-amount Amount: {{ prodVm.product.amount }}
-            md-button.md-raised.md-primary(ng-click="prodVm.buyProduct()", ng-disabled="prodVm.product.amount <= 0") Buy
-        img.product-image(src="/static/images/{{ prodVm.productId }}.png")
+main-header(show-icon=true, text="'Uniform Store' + (prodVm.department.name ? ' / ' + prodVm.department.name : '')")
+
+div(flex, layout="row")
+    md-content(flex, layout="column", layout-align="center center")
+        h1.product-header {{ prodVm.product.name }}
+        div.product-details(layout="row", layout-align="center start")
+            div(flex="30", layout="column", layout-align="center center")
+                h3.product-description {{ prodVm.product.description }}
+                h3.product-price Price: {{ prodVm.product.price }}
+                h3.product-amount Amount: {{ prodVm.product.amount }}
+                md-button.md-raised.md-primary(ng-click="prodVm.buyProduct()", ng-disabled="prodVm.product.amount <= 0") Buy
+            img.product-image(src="/static/images/{{ prodVm.productId }}.png")

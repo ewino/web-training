@@ -5,7 +5,7 @@
         .module('app.department', [])
         .controller('DepartmentController', DepartmentController);
 
-    function DepartmentController($scope, $state, DepartmentService) {
+    function DepartmentController($scope, $state, departmentService) {
         var deptVm = this;
 
         // variables.
@@ -39,9 +39,9 @@
 
             if (found) {
                 var departmentId = deptVm.currentDept;
-                DepartmentService.getProducts(departmentId)
-                    .then(function(resp) {
-                        deptVm.products = resp.data;
+                departmentService.getProducts(departmentId)
+                    .then(function(response) {
+                        deptVm.products = response;
                     })
                     .catch(function() {
                         console.error('Couldn\'t load products for department ' + departmentId);
@@ -49,9 +49,9 @@
             }
         }
 
-        DepartmentService.getDepartments()
-            .then(function(resp) {
-                deptVm.departments = resp.data.departments;
+        departmentService.getDepartments()
+            .then(function(response) {
+                deptVm.departments = response.departments;
                 if (deptVm.currentDept === null) {
                     deptVm.currentDept = deptVm.departments[0].id;
                 }
