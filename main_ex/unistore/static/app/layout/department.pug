@@ -1,11 +1,6 @@
 main-header(show-icon=true, text="'Uniform Store' + (deptVm.deptName ? ' / ' + deptVm.deptName : '')")
-
 div(flex, layout="row")
-    md-sidenav.md-sidenav-left(md-component-id='left', md-is-locked-open="$mdMedia('gt-md')", md-disable-backdrop='', md-whiteframe='4')
-        md-content
-            md-subheader Departments
-            department-button(flex, ng-repeat="dept in deptVm.departments", dept="dept", layout="row", is-active="dept.id == deptVm.currentDept")
-
+    main-sidebar(current-dept="deptVm.currentDept", layout="column")
     md-content.products-gallery(flex, layout-padding)
         .md-padding(layout="row", layout-wrap)
             mini-product(ng-repeat="product in deptVm.products track by product.id", product="product")

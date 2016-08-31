@@ -9,7 +9,8 @@
         return {
             restrict: 'E',
             scope: {
-                dept: '='
+                dept: '=',
+                isActive: '='
             },
             templateUrl: '/static/build/layout/deptSidebarBtn.html'
         };

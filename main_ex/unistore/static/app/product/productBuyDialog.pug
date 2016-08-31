@@ -18,7 +18,7 @@ md-dialog(flex="20", ng-cloak, aria-label="Buy")
                     md-input-container.md-block
                         label Color
                         md-select(ng-model="productBuyDialogVm.color", name="color", required)
-                            md-option(ng-repeat="color in productBuyDialogVm.colors") {{ color.name }}
+                            md-option(ng-repeat="color in productBuyDialogVm.colors", ng-value="color.name") {{ color.name }}
                         div(ng-messages="productBuyDialogVm.buyForm.color.$error")
                             div(ng-message="required") Please pick a color!
                     div(layout="row")

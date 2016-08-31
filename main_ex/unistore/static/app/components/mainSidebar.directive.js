@@ -11,7 +11,8 @@
             scope: {
                 currentDept: '='
             },
-            templateUrl: '/static/build/components/mainSidebar.html'
+            templateUrl: '/static/build/components/mainSidebar.html',
+            controller: 'MainSidebarController as mainSidebarVm'
         };
     }
 

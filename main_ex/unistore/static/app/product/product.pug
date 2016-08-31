@@ -1,6 +1,6 @@
 main-header(show-icon=true, text="'Uniform Store' + ' / ' + prodVm.department.name + ' / ' + prodVm.product.name")
 div(flex, layout="row")
-
+    main-sidebar(current-dept="prodVm.department.id", layout="column")
     md-content(flex)
         h1.product-header {{ prodVm.product.name }}
         div.product-details(layout="row", layout-align="center start")
