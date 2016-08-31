@@ -30,7 +30,12 @@ def _handle_uniforms_function(func, *args):
 
 @app_views.route('/api/departments', methods=['GET'])
 def get_departments():
-    return jsonify(departments=uniforms.get_departments())
+    return _handle_uniforms_function(uniforms.get_departments)
+
+
+@app_views.route('/api/departments/<int:department_id>', methods=['GET'])
+def get_department(department_id):
+    return _handle_uniforms_function(uniforms.get_department, department_id)
 
 
 @app_views.route('/api/departments/<int:department_id>/products', methods=['GET'])

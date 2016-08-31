@@ -10,6 +10,7 @@
 
         prodVm.productId = null;
         prodVm.product = null;
+        prodVm.department = null;
 
         prodVm.loadFromState = loadFromState;
         prodVm.buyProduct = buyProduct;
@@ -33,6 +34,9 @@
                         .catch(function() {
                             console.error('Couldn\'t load details for department ' + prodVm.product.department_id);
                         });
+                })
+                .catch(function() {
+                    console.error('Couldn\'t load details for product ' + prodVm.productId);
                 });
         }
 

@@ -79,6 +79,21 @@ def get_departments():
     return deepcopy(_DEPARTMENTS_DATA)
 
 
+def get_department(department_id):
+    """
+    Get full department details.
+
+    :param department_id: The department ID.
+    :return: The department details JSON.
+    :raise ValueError: If the department ID is not valid.
+    """
+    max_department_id = len(_DEPARTMENTS_DATA) - 1
+    # Validate department ID.
+    if not _validate_positive_integer(department_id, max_department_id, include_zero=True):
+        raise ValueError('Please give a proper department ID! (0-{})'.format(max_department_id))
+    return deepcopy(_DEPARTMENTS_DATA[int(department_id)])
+
+
 def get_products(department_id):
     """
     Get a list of all available products in the given department.
