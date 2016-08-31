@@ -43,6 +43,5 @@
                     $log.error('XHR failed for getProducts. ' + error.data);
                 });
         }
-
     }
 })();
