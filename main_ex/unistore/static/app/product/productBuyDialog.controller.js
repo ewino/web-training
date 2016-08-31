@@ -9,7 +9,7 @@
       var productBuyDialogVm = this;
 
       productBuyDialogVm.product = product;
-      productBuyDialogVm.color= null;
+      productBuyDialogVm.color = null;
       productBuyDialogVm.amount = null;
       productBuyDialogVm.colors = [
           {
