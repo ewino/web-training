@@ -8,9 +8,9 @@ module.exports = {
 	 * These file paths are used in the configuration of the build tasks.
 	 */
 	appFiles: {
-		js: ['static/js/**/*.module.js', 'static/js/**/*.controller.js', 'static/js/**/*.js'],
+		js: ['static/js/**/*.module.js', 'static/js/**/*.controller.js', 'static/js/**/*.js', 'static/external/lodash-*/lodash.min.js'],
 		pug: 'templates/**/*.pug',
-		stylus: 'static/styles/**/*.styl',
+		stylus: ['static/styles/*.styl', 'static/styles/**/*.styl'],
 		compiledCss: ['static/external/roboto/*.css', 'compile/css/**/*.css']
 	},
     livereloadPort: 35729

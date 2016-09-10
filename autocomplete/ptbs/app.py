@@ -1,8 +1,7 @@
 from flask import Flask, jsonify
 from flask import send_from_directory
-from flask.templating import render_template
 
-from boilerplate.colors import match_color
+from ptbs.colors import match_color
 
 app = Flask(__name__)
 
@@ -14,6 +13,6 @@ def home():
 
 @app.route('/color/<query>')
 def get_color(query):
-    return jsonify(colors=match_color(query))
+    return jsonify(results=match_color(query))
 
 app.run(debug=True)

@@ -1,5 +1,5 @@
 //-
-    Created by ewino on 25/7/2016.
+    Created by ofirb & ewino on 25/7/2016.
 
 doctype html
 html(lang="en")
@@ -11,16 +11,13 @@ html(lang="en")
         div.container(id="app" ng-controller="AutoCompleteCtrl as ctrl")
             h1
                 | 50 Shades of&nbsp;
-                span(ng-style="{color: (ctrl.color | lowercase)}", ng-bind="ctrl.color")
-            .input-wrapper
-                input(type="search")
-            ol.dropdown
-                li.selected
-                    .sample(style="background-color: red")
-                    span Red
-                li
-                    .sample(style="background-color: blue")
-                    span Blue
+                span.color-name(ng-style="{color: (ctrl.colorHex | lowercase)}", ng-bind="ctrl.colorName")
+            .input-wrapper(auto-complete-search-box, on-select="ctrl.changeColor(item.name, item.hex)",
+                           query-url="/color/{}", max-amount="5")
+                div(auto-complete-search-input)
+                .dropdown(auto-complete-dropdown)
+                    .sample(ng-style="{backgroundColor: item.hex}")
+                    span.color-name(ng-bind="item.name")
 
         script(src="/static/external/jquery-2.2.3/jquery.min.js")
         script(src="/static/external/lodash-4.3.1/lodash.min.js")
