@@ -9,4 +9,6 @@ app.template_folder = config.TEMPLATE_FOLDER
 
 app.register_blueprint(app_views)
 
-app.run(debug=config.DEBUG)
+
+if __name__ == '__main__':
+    app.run()
