@@ -155,10 +155,15 @@ for color in colors.keys():
     color_keys[color.lower().replace(" ", "")] = color
 
 
-def match_color(query):
+def match_keys(query):
     matching_colors = set()
+    words = query.split(' ')
     for key, color_name in color_keys.items():
-        if query in key:
+        if all(word in key for word in words):
             matching_colors.add(color_name)
+    return matching_colors
 
+
+def match_color(query):
+    matching_colors = match_keys(query)
     return [{'name': color_name, 'hex': colors[color_name], 'score': (len(query) / len(color_name) * 100)} for color_name in matching_colors]
