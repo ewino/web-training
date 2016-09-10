@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask import send_from_directory
 from flask.templating import render_template
 
 from boilerplate.colors import match_color
@@ -8,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return send_from_directory(app.static_folder + '/app', 'index.html')
 
 
 @app.route('/color/<query>')

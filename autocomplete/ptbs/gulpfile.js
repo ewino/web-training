@@ -16,6 +16,8 @@ var nib = require('nib');
 // Load user config and package data
 var cfg = require('./build.config.js');
 
+var buildPath = 'static/app';
+
 /**
  * Compile and concat scripts, styles and templates. Invoked when running 'gulp' with no other arguments.
  * The task first clean the build folder (in gulp syntax, we say the 'default' task is depended on the 'clean' to run.
@@ -93,7 +95,7 @@ function buildJs() {
         .pipe(jscs.reporter)
         .pipe(ngAnnotate, {single_quotes: true})
         .pipe(concat, 'app.js')
-        .pipe(gulp.dest, 'build');
+        .pipe(gulp.dest, buildPath);
 
     return jsPipe();
 }
@@ -117,7 +119,7 @@ function buildStyles() {
     var stylesPipe = lazypipe()
         .pipe(plumber, {errorHandler: util.log})
         .pipe(concat, 'app.css')
-        .pipe(gulp.dest, 'build');
+        .pipe(gulp.dest, buildPath);
 
     return stylesPipe();
 }
@@ -129,7 +131,7 @@ function buildPug() {
     var pugPipe = lazypipe()
         .pipe(plumber, {errorHandler: util.log})
         .pipe(pug, {pretty: true, data: {buildCfg: cfg}})
-        .pipe(gulp.dest, 'build');
+        .pipe(gulp.dest, buildPath);
 
     return pugPipe();
 }
